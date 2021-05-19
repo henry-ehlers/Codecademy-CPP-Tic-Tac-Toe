@@ -26,7 +26,9 @@ int main() {
 		// Iterate over each of the two players
 		for (int player : players) {
 
+
 			// Display the current state of the board
+			std::cout << fields_remaining << " turns remain!\n\n";
 			print_board(board);
 
 			// Get the current player's input

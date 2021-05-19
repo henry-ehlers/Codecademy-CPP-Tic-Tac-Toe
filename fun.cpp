@@ -16,13 +16,14 @@ void print_board(std::vector<std::vector<char>> board) {
 		}
 		std::cout << "\n";
   	}
+  	std::cout << "\n";
 }
 
 void game_start() {
 	std::cout << "===========\n";
 	std::cout << "TIC TAC TOE\n";
 	std::cout << "===========\n";
-	std::cout << "Two players take turn trying to get three in a row.\n";
+	std::cout << "Two players take turn trying to get three in a row.\n\n";
 }
 
 void get_player_input(int player, std::vector<std::vector<char>> &board) {
@@ -102,9 +103,11 @@ bool horizontal_win(char player_token, std::vector<std::vector<char>> &board) {
 			}
 		}
 		if (horizontal_win) {
+			std::cout << "horizontal_win\n";
 			return horizontal_win;
 		}
 	}
+	std::cout << "end horizontal win\n";
 	return horizontal_win;
 }
 
@@ -118,9 +121,11 @@ bool vertical_win(char player_token, std::vector<std::vector<char>> &board) {
 			}
 		}
 		if (vertical_win) {
+			std::cout << "vertical_win\n";
 			return vertical_win;
 		}
 	}
+	std::cout << "end vert win\n";
 	return vertical_win;
 }
 
@@ -134,7 +139,10 @@ bool diagonal_win(char player_token, std::vector<std::vector<char>> &board) {
 			break;
 		}
 	}
-	if (diagonal_win) {return diagonal_win;}
+	if (diagonal_win) {
+		std::cout << "diagonal_win\n";
+		return diagonal_win;
+	}
 	
 	// Check Top-Left to Bottom-right
 	diagonal_win = true;
@@ -144,15 +152,28 @@ bool diagonal_win(char player_token, std::vector<std::vector<char>> &board) {
 			break;
 		}
 	}
+	std::cout << "end diagn win\n";
 	return diagonal_win;
 }
 
 bool check_victory(int player, std::vector<std::vector<char>> &board) {
+	
+	// Get player token of current player
 	char player_token = (player == 1) ? 'x' : 'o';
-	if (horizontal_win(player_token, board) || 
-		vertical_win(player_token, board) ||
-		diagonal_win(player_token, board)) {
+
+	// Check if horizontal win condition holds
+	if (horizontal_win(player_token, board)) {
 		return true;
+
+	// Check if vertical win condition holds
+	} else if (vertical_win(player_token, board)) {
+		return true;
+
+	// Check if diagonal win condition holds
+	} else if (diagonal_win(player_token, board)) {
+		return true;
+
+	// No winner yet
 	} else {
 		return false;
 	}
