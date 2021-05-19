@@ -21,8 +21,10 @@ int main() {
 		for (int player : players) {
 			print_board(board);
 			get_player_input(player, board);
+			// check whether player has wone
+			// check whether board is completely filled
 		}
 	}
 
-	// 
+	// print endgame
 }
