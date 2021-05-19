@@ -16,7 +16,7 @@ int main() {
 		{' ', ' ', ' '}
 	};
 
-	// 
+	// Game Loop
 	while (game_ongoing) {
 		for (int player : players) {
 			print_board(board);
@@ -24,5 +24,5 @@ int main() {
 		}
 	}
 
-	//
+	// 
 }

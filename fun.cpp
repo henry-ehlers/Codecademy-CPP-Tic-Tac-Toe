@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 #include "fun.hpp"
+#include <stdlib.h> 
 
 void print_board(std::vector<std::vector<char>> board) {
 	for (int row = 0; row < 3; row++) {
@@ -27,14 +28,25 @@ void game_start() {
 void get_player_input(int player, std::vector<std::vector<char>> &board) {
 	
 	// Initialize Variables
-	char player_token = (player == 1) ? 'X' : 'O';
+	char player_token = (player == 1) ? 'x' : 'o';
 
 	// What Row?
 	int row = get_row(player, board);
 
 	// What Column?
 	int col = get_col(player, board[row]);
+	
+	// Add Player choice to board
+	populate_board(player_token, board, row, col);
 
+}
+
+void populate_board(char player_token, std::vector<std::vector<char>> &board, int row, int col) {
+	if (board[row][col] != ' ') {
+		EXIT_FAILURE;
+	} else {
+		board[row][col] = player_token;
+	}
 	
 }
 

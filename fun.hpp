@@ -13,3 +13,5 @@ bool row_slot_available(std::vector<char> &row);
 int get_row(int player, std::vector<std::vector<char>> &board);
 
 int get_col(int player, std::vector<char> &row);
+
+void populate_board(char player_token, std::vector<std::vector<char>> &board, int row, int col);
