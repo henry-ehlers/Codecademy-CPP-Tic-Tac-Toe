@@ -5,9 +5,9 @@
 
 int main() {
   std::vector<std::vector<char>> board = {
-    {' ', ' ', ' '},
+  	{' ', ' ', ' '},
     {' ', ' ', ' '},
     {' ', ' ', ' '}
   };
-  //print_board(board);
+  print_board(board);
 }
