@@ -15,3 +15,7 @@ int get_row(int player, std::vector<std::vector<char>> &board);
 int get_col(int player, std::vector<char> &row);
 
 void populate_board(char player_token, std::vector<std::vector<char>> &board, int row, int col);
+
+bool did_player_win(int player, std::vector<std::vector<char>> &board);
+
+bool horizontal_win(char player_token, std::vector<std::vector<char>> &board);

@@ -91,3 +91,29 @@ bool row_slot_available(std::vector<char> &row) {
 	}
 	return empty > 0;
 }
+
+bool did_player_win(int player, std::vector<std::vector<char>> &board) {
+	// Initialize Variables
+	char player_token = (player == 1) ? 'x' : 'o';
+	if (horizontal_win(player_token, board)) {
+		return true;	
+	}
+	return false;
+	
+}
+
+bool horizontal_win(char player_token, std::vector<std::vector<char>> &board) {
+	for (std::vector<char> row : board) {
+		bool horizontal_win = true;
+		for (char col : row) {
+			if (col != player_token) {
+				horizontal_win = false;
+				break;
+			}
+		}
+		if (horizontal_win) {
+			return horizontal_win;
+		}
+	}
+	return horizontal_win;
+}
