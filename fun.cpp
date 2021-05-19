@@ -120,7 +120,7 @@ bool horizontal_win(char player_token, std::vector<std::vector<char>> &board) {
 
 bool vertical_win(char player_token, std::vector<std::vector<char>> &board) {
 	for (int col = 0; col < 3; col++) {
-		bool vertical_win = false;
+		bool vertical_win = true;
 		for (int row = 0; row < 3; row++) {
 			if (board[row][col] != player_token) {
 				vertical_win = false;
@@ -132,4 +132,27 @@ bool vertical_win(char player_token, std::vector<std::vector<char>> &board) {
 		}
 	}
 	return vertical_win;
+}
+
+bool diagonal_win(char player_token, std::vector<std::vector<char>> &board) {
+
+	// Check Top-Right to Bottom-Lef
+	bool diagonal_win = true;
+	for (int index = 0; index < 3; index++) {
+		if (board[index][index] != player_token) {
+			diagonal_win = false;
+			break;
+		}
+	}
+	if (diagonal_win) {return diagonal_win;}
+	
+	// Check Top-Left to Bottom-right
+	diagonal_win = true;
+	for (int index = 0; index < 3; index++) {
+		if (board[index][2-index] != player_token) {
+			diagonal_win = false;
+			break;
+		}
+	}
+	return diagonal_win;
 }
