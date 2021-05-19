@@ -36,14 +36,21 @@ int main() {
 			if (check_victory(player, board)) {
 				game_ongoing = false;
 				winner = player;
+				break;
 			}
 
 			// check whether board is completely filled
 			if (fields_remaining-- == 0) {
 				game_ongoing = false;
+				break;
 			}
 		}
 	}
 
 	// print endgame
+	if (winner == -1) {
+		std::cout << "A Draw!\n";
+	} else {
+		std::cout << "Congratulation to Player " << winner << " for winning this round of TIC TAC TOE!\n";
+	}
 }
