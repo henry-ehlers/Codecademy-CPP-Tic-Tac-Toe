@@ -11,6 +11,7 @@ int main() {
 	bool game_ongoing = true;
 	int players[2] = {0, 1};
 	int fields_remaining = 3*3;
+	int winner = -1;
 
 	// Intialize an empty board
 	std::vector<std::vector<char>> board = {
@@ -32,9 +33,15 @@ int main() {
 			get_player_input(player, board);
 
 			// check whether player has wone
-			
+			if (check_victory(player, board)) {
+				game_ongoing = false;
+				winner = player;
+			}
 
 			// check whether board is completely filled
+			if (fields_remaining-- == 0) {
+				game_ongoing = false;
+			}
 		}
 	}
 
