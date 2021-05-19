@@ -117,3 +117,19 @@ bool horizontal_win(char player_token, std::vector<std::vector<char>> &board) {
 	}
 	return horizontal_win;
 }
+
+bool vertical_win(char player_token, std::vector<std::vector<char>> &board) {
+	for (int col = 0; col < 3; col++) {
+		bool vertical_win = false;
+		for (int row = 0; row < 3; row++) {
+			if (board[row][col] != player_token) {
+				vertical_win = false;
+				break;
+			}
+		}
+		if (vertical_win) {
+			return vertical_win;
+		}
+	}
+	return vertical_win;
+}

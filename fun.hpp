@@ -19,3 +19,7 @@ void populate_board(char player_token, std::vector<std::vector<char>> &board, in
 bool did_player_win(int player, std::vector<std::vector<char>> &board);
 
 bool horizontal_win(char player_token, std::vector<std::vector<char>> &board);
+
+bool vertical_win(char player_token, std::vector<std::vector<char>> &board);
+
+bool diagonal_win(char player_token, std::vector<std::vector<char>> &board);
