@@ -55,15 +55,15 @@ int get_col(int player, std::vector<char> &row) {
 	bool valid_input = false;
 	int col;
 	while (!valid_input) {
-		std::cout << "Player " << player << ", what column [0, 1, 2]?\n";
+		std::cout << "Player " << player << ", what column [0, 1, 2]: ";
 		std::cin >> col;
 		if ( (col < 3 ) && ( col >= 0 ) && ( row[col] == ' ' ) ) {
-			std::cout << "Column selected by player " << player << ": " << col << "\n"; 
 			valid_input = true;
 		} else {
 			std::cout << "Provided column is invalid. Please try again.\n";
 		}
 	}
+	std::cout << "\n";
 	return col;
 }
 
@@ -71,10 +71,9 @@ int get_row(int player, std::vector<std::vector<char>> &board) {
 	bool valid_input = false;
 	int row;
 	while (!valid_input) {
-		std::cout << "Player " << player << ", what row [0,1,2]?\n";
+		std::cout << "Player " << player << ", what row [0,1,2]: ";
 		std::cin >> row;
 		if ( (row < 3 ) && ( row >= 0 ) && ( row_slot_available(board[row]) ) ) {
-			std::cout << "Row selected by player " << player << ": " << row << "\n"; 
 			valid_input = true;
 		} else {
 			std::cout << "Provided row is invalid. Please try again.\n";
@@ -94,8 +93,9 @@ bool row_slot_available(std::vector<char> &row) {
 }
 
 bool horizontal_win(char player_token, std::vector<std::vector<char>> &board) {
+	bool horizontal_win;
 	for (std::vector<char> row : board) {
-		bool horizontal_win = true;
+		horizontal_win = true;
 		for (char col : row) {
 			if (col != player_token) {
 				horizontal_win = false;
@@ -103,17 +103,16 @@ bool horizontal_win(char player_token, std::vector<std::vector<char>> &board) {
 			}
 		}
 		if (horizontal_win) {
-			std::cout << "horizontal_win\n";
 			return horizontal_win;
 		}
 	}
-	std::cout << "end horizontal win\n";
 	return horizontal_win;
 }
 
 bool vertical_win(char player_token, std::vector<std::vector<char>> &board) {
+	bool vertical_win;
 	for (int col = 0; col < 3; col++) {
-		bool vertical_win = true;
+		vertical_win = true;
 		for (int row = 0; row < 3; row++) {
 			if (board[row][col] != player_token) {
 				vertical_win = false;
@@ -121,11 +120,9 @@ bool vertical_win(char player_token, std::vector<std::vector<char>> &board) {
 			}
 		}
 		if (vertical_win) {
-			std::cout << "vertical_win\n";
 			return vertical_win;
 		}
 	}
-	std::cout << "end vert win\n";
 	return vertical_win;
 }
 
@@ -140,7 +137,6 @@ bool diagonal_win(char player_token, std::vector<std::vector<char>> &board) {
 		}
 	}
 	if (diagonal_win) {
-		std::cout << "diagonal_win\n";
 		return diagonal_win;
 	}
 	
@@ -152,7 +148,6 @@ bool diagonal_win(char player_token, std::vector<std::vector<char>> &board) {
 			break;
 		}
 	}
-	std::cout << "end diagn win\n";
 	return diagonal_win;
 }
 

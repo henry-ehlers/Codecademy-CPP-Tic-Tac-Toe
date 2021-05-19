@@ -26,7 +26,6 @@ int main() {
 		// Iterate over each of the two players
 		for (int player : players) {
 
-
 			// Display the current state of the board
 			std::cout << fields_remaining << " turns remain!\n\n";
 			print_board(board);
@@ -49,6 +48,9 @@ int main() {
 		}
 	}
 
+	// Display Final Board state
+	print_board(board);
+	
 	// print endgame
 	if (winner == -1) {
 		std::cout << "A Draw!\n";
